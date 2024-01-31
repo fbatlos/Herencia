@@ -1,7 +1,34 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+open class Persona(open val nombre :String , edad: Int){
+
+
+    var edad:Int = edad
+        private set
+
+    fun cumple(){
+        edad ++
+    }
+
+    override fun toString(): String {
+        return "Persona (nombre = $nombre , edad = $edad)"
+    }
+
+}
+
+class Estudiante(nombre: String , edad: Int , var carrera:String):Persona(nombre , edad){
+    override var nombre = nombre
+        get() = field.uppercase()
+}
+
+
+
+fun main() {
+    val persona = Persona("pepe" , 25)
+    persona.cumple()
+   // println(persona.toString())
+  //  println(persona)
+
+    val estudiante = Estudiante("marta" , 19 , "Derecho")
+    println(estudiante.nombre)
+    println(persona.nombre)
 }
